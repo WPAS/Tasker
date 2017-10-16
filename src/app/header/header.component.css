@@ -1,0 +1,19 @@
+h1 {
+  font-size: 5rem;
+  margin-top: 0;
+}
+
+header {
+  background-color: rgb(196, 68, 68);
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+hr {
+  border-color: rgb(69,67,67);
+}
+
+p {
+  font-size: 1.6rem;
+}
