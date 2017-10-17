@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TasksService {
-  private urgentTasks = [{title: 'Some task', description: 'This task is hardcoded', status: 'Urgent'}];
+  private urgentTasks = [];
   private importantTasks = [];
   private otherTasks = [];
 
@@ -17,18 +17,25 @@ export class TasksService {
     switch (newTask.status) {
       case 'Urgent':
         this.urgentTasks.push(newTask);
+        localStorage.setItem('urgentTasks', JSON.stringify(this.urgentTasks));
         break;
       case 'Important':
         this.importantTasks.push(newTask);
+        localStorage.setItem('importantTasks', JSON.stringify(this.importantTasks));
         break;
       case 'Others':
         this.otherTasks.push(newTask);
+        localStorage.setItem('otherTasks', JSON.stringify(this.otherTasks));
         break;
       default:
         console.log('If you see this, something unexpected happened');
     }
+  }
 
-    console.log(this.urgentTasks, this.importantTasks, this.otherTasks);
+  fetchTasks() {
+    this.urgentTasks = JSON.parse(localStorage.getItem('urgentTasks'));
+    this.importantTasks = JSON.parse(localStorage.getItem('importantTasks'));
+    this.otherTasks = JSON.parse(localStorage.getItem('otherTasks'));
   }
 
   getTasks(status) {
@@ -49,5 +56,4 @@ export class TasksService {
 
     return tasks;
   }
-
 }
