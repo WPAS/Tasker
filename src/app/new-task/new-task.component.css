@@ -1,0 +1,26 @@
+
+p {
+  padding-top: 1rem;
+}
+
+p a {
+  color: white;
+}
+
+button {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: .5rem;
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  text-transform: uppercase;
+}
+
+.help-bloc, .text-muted {
+  color: white;
+}
+
+select.ng-invalid.ng-touched, input.ng-invalid.ng-touched {
+	border: 2px solid red;
+}

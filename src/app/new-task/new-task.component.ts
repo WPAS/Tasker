@@ -12,4 +12,10 @@ export class NewTaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(newTask) {
+    if (newTask.invalid) {
+      return;
+    }
+    console.log(newTask.value);
+  }
 }
