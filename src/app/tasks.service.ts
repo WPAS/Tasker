@@ -12,7 +12,10 @@ export class TasksService {
     if (data.invalid) {
       return;
     }
-    const newTask = data.value;
+    const newTask = {
+      ...data.value,
+      id: data.value.status + Date.now()
+    };
 
     switch (newTask.status) {
       case 'Urgent':
@@ -33,9 +36,9 @@ export class TasksService {
   }
 
   fetchTasks() {
-    this.urgentTasks = JSON.parse(localStorage.getItem('urgentTasks'));
-    this.importantTasks = JSON.parse(localStorage.getItem('importantTasks'));
-    this.otherTasks = JSON.parse(localStorage.getItem('otherTasks'));
+    this.urgentTasks = JSON.parse(localStorage.getItem('urgentTasks')) || [];
+    this.importantTasks = JSON.parse(localStorage.getItem('importantTasks')) || [];
+    this.otherTasks = JSON.parse(localStorage.getItem('otherTasks')) || [];
   }
 
   getTasks(status) {
@@ -55,5 +58,31 @@ export class TasksService {
     }
 
     return tasks;
+  }
+
+  removeTask(id, status) {
+    const remover = (arr) => {
+      const filteredArr = arr.filter((item) => {
+        return item.id !== id;
+      });
+      return filteredArr;
+    };
+
+    switch (status) {
+      case 'U':
+        this.urgentTasks = remover(this.urgentTasks);
+        localStorage.setItem('urgentTasks', JSON.stringify(this.urgentTasks));
+        break;
+      case 'I':
+        this.importantTasks = remover(this.importantTasks);
+        localStorage.setItem('importantTasks', JSON.stringify(this.importantTasks));
+        break;
+      case 'O':
+        this.otherTasks = remover(this.otherTasks);
+        localStorage.setItem('otherTasks', JSON.stringify(this.otherTasks));
+        break;
+      default:
+        console.log('If you see this, something unexpected happened');
+    }
   }
 }
