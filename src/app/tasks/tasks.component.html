@@ -1,36 +1,28 @@
 <div class="container-fluid">
-  <div class="button-wraper row">
-    <div class="col-sm-offset-3 col-sm-6 col">
-      <a class="btn btn-block" routerLink="/new-task">Add new task</a>
-    </div>
-  </div>
-  <div class="boards row">
-    <div class="urgent col-xs-12 col-md-4 col">
-      <h2>Urgent</h2>
-      <div>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
+    <div class="button-wraper row">
+      <div class="col-sm-offset-3 col-sm-6 col">
+        <a class="btn btn-block" routerLink="/new-task">Add new task</a>
       </div>
     </div>
-    <div class="important col-xs-12 col-md-4 col">
-      <h2>Important</h2>
-      <div>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
+    <div class="boards row">
+      <div class="urgent col-xs-12 col-md-4 col">
+        <h2>Urgent</h2>
+        <div>
+          <app-list [tasks]="getData('urgent')"></app-list>
+        </div>
+      </div>
+      <div class="important col-xs-12 col-md-4 col">
+        <h2>Important</h2>
+        <div>
+          <app-list [tasks]="getData('important')"></app-list>
+        </div>
+      </div>
+      <div class="others col-xs-12 col-md-4 col">
+        <h2>Others</h2>
+        <div>
+          <app-list [tasks]="getData('other')"></app-list>
+        </div>
       </div>
     </div>
-    <div class="others col-xs-12 col-md-4 col">
-      <h2>Others</h2>
-      <div>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
-      </div>
-    </div>
-  </div>
 
-</div>
+  </div>

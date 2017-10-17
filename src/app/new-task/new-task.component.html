@@ -1,9 +1,9 @@
 <div class="container">
-  <p><a routerLink="/">&lt;&lt; Go back to your tasks</a></p>
+  <p><a routerLink="/">&lt;&lt; Go back to the list of tasks</a></p>
   <form (ngSubmit)="onSubmit(newTask)" #newTask="ngForm">
     <div class="form-group">
       <label for="title">Task*</label>
-      <input type="text" class="form-control" id="title" name="title" placeholder="Write your task"
+      <input type="text" class="form-control" id="title" name="title" placeholder="Write new task"
       required ngModel #titleField="ngModel">
       <span class="help-block" *ngIf="titleField.invalid && titleField.touched">Please write a task!</span>
     </div>
@@ -21,8 +21,8 @@
       </select>
       <span class="help-block" *ngIf="statusField.invalid && statusField.touched">Please choose importance of your task!</span>
     </div>
-    <small class="form-text text-muted">Fields marked with an asterisk (*) are required</small>
-    <button type="submit" class="btn btn-warning btn-block">Add your task</button>
+    <small class="form-text text-muted">Fields marked with asterisks (*) are required</small>
+    <button type="submit" class="btn btn-warning btn-block" [disabled]="newTask.invalid">Save your task</button>
   </form>
 </div>
 

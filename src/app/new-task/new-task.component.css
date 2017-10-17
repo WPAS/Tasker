@@ -17,10 +17,11 @@ button {
   text-transform: uppercase;
 }
 
-.help-bloc, .text-muted {
+.help-block, .text-muted {
   color: white;
 }
 
 select.ng-invalid.ng-touched, input.ng-invalid.ng-touched {
-	border: 2px solid red;
+  border: 2px solid red;
+  background-color: yellow;
 }

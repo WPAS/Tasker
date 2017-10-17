@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { TaskComponent } from './task/task.component';
+import { TasksService } from './tasks.service';
+import { ListComponent } from './list/list.component';
 
 
 const routes = [
@@ -22,14 +24,15 @@ const routes = [
     HeaderComponent,
     TasksComponent,
     NewTaskComponent,
-    TaskComponent
+    TaskComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [],
+  providers: [TasksService],
   bootstrap: [AppComponent]
 })
 
