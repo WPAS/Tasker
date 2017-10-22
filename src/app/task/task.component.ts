@@ -8,6 +8,9 @@ import { TasksService } from '../tasks.service';
 })
 export class TaskComponent implements OnInit {
   @Input() task;
+  hideDescription = true;
+  togglerText = 'Show details';
+
   constructor(private taskService: TasksService) { }
 
   ngOnInit() {
@@ -21,9 +24,12 @@ export class TaskComponent implements OnInit {
   onRemove(e) {
     const id = e.target.id;
     const status = e.target.id[0];
-    console.log(status);
     this.taskService.removeTask(id, status);
   }
 
+  toggleDescription() {
+    this.hideDescription = !this.hideDescription;
+    this.togglerText = this.hideDescription ? 'Show details' : 'Hide details';
+  }
 
 }
