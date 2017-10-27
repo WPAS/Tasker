@@ -41,6 +41,33 @@ export class TasksService {
     this.otherTasks = JSON.parse(localStorage.getItem('otherTasks')) || [];
   }
 
+  getTaskById(id) {
+    let task;
+    const status = id[0];
+
+    const getter = (arr) => {
+      const fetchedTask = arr.filter((item) => {
+        return item.id === id;
+      });
+      return fetchedTask[0];
+    };
+
+    switch (status) {
+      case 'U':
+        task = getter(this.urgentTasks);
+        break;
+      case 'I':
+        task = getter(this.importantTasks);
+        break;
+      case 'O':
+        task = getter(this.otherTasks);
+        break;
+      default:
+        console.log('If you see this, something unexpected happened');
+    }
+    return task;
+  }
+
   getTasks(status) {
     let tasks = [];
     switch (status) {
@@ -60,7 +87,11 @@ export class TasksService {
     return tasks;
   }
 
-  removeTask(id, status) {
+
+
+  removeTask(id) {
+    const status = id[0];
+
     const remover = (arr) => {
       const filteredArr = arr.filter((item) => {
         return item.id !== id;

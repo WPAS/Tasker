@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-task',
@@ -8,13 +9,13 @@ import { TasksService } from '../tasks.service';
 })
 export class NewTaskComponent implements OnInit {
 
-  constructor(private tasksService: TasksService) {  }
+  constructor(private tasksService: TasksService, private router: Router) {  }
 
   ngOnInit() {
   }
 
   onSubmit(newTask) {
     this.tasksService.addNewTask(newTask);
-    newTask.reset();
+    this.router.navigate(['']);
   }
 }

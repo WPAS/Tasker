@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { TasksService } from '../tasks.service';
 
 @Component({
@@ -11,20 +12,19 @@ export class TaskComponent implements OnInit {
   hideDescription = true;
   togglerText = 'Show details';
 
-  constructor(private taskService: TasksService) { }
+  constructor(private taskService: TasksService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onEdit(e) {
-    console.log(e.target.id);
-
+    const id = e.target.id;
+    this.router.navigate([`edit-task/${id}`]);
   }
 
   onRemove(e) {
     const id = e.target.id;
-    const status = e.target.id[0];
-    this.taskService.removeTask(id, status);
+    this.taskService.removeTask(id);
   }
 
   toggleDescription() {

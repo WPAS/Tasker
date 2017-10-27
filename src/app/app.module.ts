@@ -10,11 +10,13 @@ import { NewTaskComponent } from './new-task/new-task.component';
 import { TaskComponent } from './task/task.component';
 import { TasksService } from './tasks.service';
 import { ListComponent } from './list/list.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 
 const routes = [
   {path: '', component: TasksComponent},
   {path: 'new-task', component: NewTaskComponent},
+  {path: 'edit-task/:id', component: EditTaskComponent},
   {path: '**', redirectTo: '/'}
 ];
 
@@ -25,7 +27,8 @@ const routes = [
     TasksComponent,
     NewTaskComponent,
     TaskComponent,
-    ListComponent
+    ListComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

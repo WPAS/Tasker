@@ -2,7 +2,7 @@
   <h3>{{ task.title }}</h3>
   <p [hidden] = "hideDescription">{{ task.description }}</p>
   <p class="toggle" (click)="toggleDescription()" *ngIf="task.description !== ''">{{ togglerText }}</p>
-  <button class="btn btn-warning" [id]="task.id" (click)="onEdit($event)" disabled>Edit</button>
+  <button class="btn btn-warning" [id]="task.id" (click)="onEdit($event)">Edit</button>
   <button class="btn btn-danger" [id]="task.id" (click)="onRemove($event)">Remove</button>
 </div>
 <hr>

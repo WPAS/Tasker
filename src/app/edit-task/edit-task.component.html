@@ -1,0 +1,25 @@
+<div class="container">
+  <p><a routerLink="/">&lt;&lt; Go back to the list of tasks</a></p>
+  <form (ngSubmit)="onSubmit(newTask)" #newTask="ngForm">
+    <div class="form-group">
+      <label for="title">Task</label>
+      <input type="text" class="form-control" id="title" name="title"
+      required [ngModel]="task.title" #titleField="ngModel">
+      <span class="help-block" *ngIf="titleField.invalid && titleField.touched">Please write a task!</span>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="3" [ngModel]="task.description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="status">Type</label>
+      <select class="form-control" id="status" name="status" required [ngModel]="task.status" #statusField="ngModel">
+        <option>Urgent</option>
+        <option>Important</option>
+        <option>Others</option>
+      </select>
+      <span class="help-block" *ngIf="statusField.invalid && statusField.touched">Please choose importance of your task!</span>
+    </div>
+    <button type="submit" class="btn btn-warning btn-block" [disabled]="newTask.invalid">Save your task</button>
+  </form>
+</div>

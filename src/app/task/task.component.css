@@ -2,3 +2,11 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.btn-danger {
+  float: right;
+}
+
+.btn {
+  width: 10rem;
+}
