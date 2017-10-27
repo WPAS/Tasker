@@ -19,15 +19,15 @@ export class TasksService {
 
     switch (newTask.status) {
       case 'Urgent':
-        this.urgentTasks.push(newTask);
+        this.urgentTasks.unshift(newTask);
         localStorage.setItem('urgentTasks', JSON.stringify(this.urgentTasks));
         break;
       case 'Important':
-        this.importantTasks.push(newTask);
+        this.importantTasks.unshift(newTask);
         localStorage.setItem('importantTasks', JSON.stringify(this.importantTasks));
         break;
       case 'Others':
-        this.otherTasks.push(newTask);
+        this.otherTasks.unshift(newTask);
         localStorage.setItem('otherTasks', JSON.stringify(this.otherTasks));
         break;
       default:
@@ -46,10 +46,10 @@ export class TasksService {
     const status = id[0];
 
     const getter = (arr) => {
-      const fetchedTask = arr.filter((item) => {
+      const fetchedTask = arr.find((item) => {
         return item.id === id;
       });
-      return fetchedTask[0];
+      return fetchedTask;
     };
 
     switch (status) {
